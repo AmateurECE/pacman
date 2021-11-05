@@ -1,0 +1,23 @@
+pkgname="git-touch"
+pkgver="0.1.0"
+pkgrel="1"
+pkgdesc="Create and track changes to files with a single command"
+arch=("any")
+depends=("git" "glibc" "libbsd")
+license=("GPLv3")
+source=("https://github.com/AmateurECE/git-touch/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('5c6b50585158dda7ce83d1d63ab397c18981d3f8b6f97c103fd4e16ee780ff8a')
+makedepends=("meson")
+
+prepare() {
+    tar xzf v$pkgver.tar.gz
+}
+
+build() {
+    (cd $pkgname-$pkgver && meson setup ../build)
+    (cd build && ninja)
+}
+
+package() {
+    (cd build && meson install --destdir=$pkgdir)
+}
