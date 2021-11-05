@@ -1,0 +1,28 @@
+pkgname="renderbars"
+pkgver="0.3.0"
+pkgrel="1"
+pkgdesc="A command line app to render text files as Handlebars templates"
+arch=("any")
+depends=("glibc" "gcc-libs")
+license=("GPLv3")
+source=("https://github.com/AmateurECE/Renderbars/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('a43d6be5b5538d13daadd1e1d802b00857f2b4052a4039bb70e3972d9f74c4a9')
+makedepends=("cargo" "binutils")
+url="https://github.com/AmateurECE/Renderbars"
+groups=("edtwardy")
+
+prepare() {
+    tar xzf v$pkgver.tar.gz
+}
+
+build() {
+    (cd Renderbars-$pkgver && cargo build --release)
+    strip "Renderbars-$pkgver/target/release/$pkgname"
+}
+
+package() {
+    install -d $pkgdir/usr/bin
+    install "Renderbars-$pkgver/target/release/$pkgname" $pkgdir/usr/bin
+    install -d $pkgdir/usr/share/licenses/$pkgname
+    install Renderbars-$pkgver/LICENSE $pkgdir/usr/share/licenses/$pkgname
+}
