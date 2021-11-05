@@ -9,6 +9,7 @@ source=("https://github.com/AmateurECE/git-touch/archive/refs/tags/v$pkgver.tar.
 sha256sums=('5c6b50585158dda7ce83d1d63ab397c18981d3f8b6f97c103fd4e16ee780ff8a')
 makedepends=("meson")
 url="https://github.com/AmateurECE/git-touch"
+groups=("edtwardy")
 
 prepare() {
     tar xzf v$pkgver.tar.gz
