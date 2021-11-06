@@ -1,12 +1,12 @@
 pkgname="renderbars"
-pkgver="0.3.0"
+pkgver="0.3.1"
 pkgrel="1"
 pkgdesc="A command line app to render text files as Handlebars templates"
 arch=("any")
 depends=("glibc" "gcc-libs")
 license=("GPLv3")
 source=("https://github.com/AmateurECE/Renderbars/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('a43d6be5b5538d13daadd1e1d802b00857f2b4052a4039bb70e3972d9f74c4a9')
+sha256sums=('52c0d83d3d63a757c4b0d86e1bdba6c90fb8d57a7a76f81d1f856d1d376a6465')
 makedepends=("cargo" "binutils")
 url="https://github.com/AmateurECE/Renderbars"
 groups=("edtwardy")
