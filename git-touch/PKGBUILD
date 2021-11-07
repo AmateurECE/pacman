@@ -16,7 +16,7 @@ prepare() {
 }
 
 build() {
-    (cd $pkgname-$pkgver && meson setup ../build)
+    (cd $pkgname-$pkgver && meson setup --prefix /usr ../build)
     (cd build && ninja)
 }
 
