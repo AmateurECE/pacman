@@ -1,0 +1,24 @@
+pkgname="libfsautomata"
+pkgver="0.1.0"
+pkgrel="1"
+pkgdesc="Simple statically linked state machine framework in C"
+arch=("any")
+license=("MIT")
+source=("https://github.com/AmateurECE/fsautomata/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('7c308a760888be7121d88cf828402524fe4569989b91e2f983363ee7b05a7e58')
+makedepends=("meson")
+url="https://github.com/AmateurECE/fsautomata"
+groups=("edtwardy")
+
+prepare() {
+    tar xzf v$pkgver.tar.gz
+}
+
+build() {
+    (cd fsautomata-$pkgver && meson setup --prefix /usr ../build)
+    (cd build && ninja)
+}
+
+package() {
+    (cd build && meson install --destdir=$pkgdir)
+}
