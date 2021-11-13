@@ -1,0 +1,24 @@
+pkgname="libseastar"
+pkgver="0.1.0"
+pkgrel="1"
+pkgdesc="Statically linked C library exporting common programming idioms"
+arch=("any")
+license=("MIT")
+source=("https://github.com/AmateurECE/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('90a0ed61d4bb2aee43ed13aee272db9f43ef624de2d2025cef03062c9268d56f')
+makedepends=("meson")
+url="https://github.com/AmateurECE/$pkgname"
+groups=("edtwardy")
+
+prepare() {
+    tar xzf v$pkgver.tar.gz
+}
+
+build() {
+    (cd $pkgname-$pkgver && meson setup --prefix /usr ../build)
+    (cd build && ninja)
+}
+
+package() {
+    (cd build && meson install --destdir=$pkgdir)
+}
