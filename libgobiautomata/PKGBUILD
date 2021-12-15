@@ -1,14 +1,15 @@
 pkgname="libgobiautomata"
-pkgver="0.2.0"
+pkgver="0.3.0"
 pkgrel="1"
 pkgdesc="Simple finite state automaton framework in C"
 arch=("any")
 license=("MIT")
 source=("https://github.com/AmateurECE/libgobiautomata/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('e62b3f5bb59ab7b9c800e221927ed9526d44b4b5525f1a25884497fdd5052eed')
+sha256sums=('4d46b06b55bc28b492c901e2d03c459691a10835ba2a05a53436cd87f6e07cf7')
 makedepends=("meson")
 url="https://github.com/AmateurECE/libgobiautomata"
 groups=("edtwardy")
+options=(debug !strip)
 
 prepare() {
     tar xzf v$pkgver.tar.gz
@@ -17,16 +18,10 @@ prepare() {
 lib_name=$pkgname.so.$pkgver
 build() {
     (cd $pkgname-$pkgver &&
-         meson setup --prefix /usr -Dbuildtype=release ../build)
-    (cd build &&
-         ninja &&
-         objcopy --only-keep-debug $lib_name $pkgname.debug &&
-         strip --strip-debug --strip-unneeded $lib_name &&
-         objcopy --add-gnu-debuglink=$pkgname.debug $lib_name)
+         meson setup --prefix /usr -Dbuildtype=debug ../build)
+    (cd build && ninja)
 }
 
 package() {
-    (cd build &&
-         meson install --destdir=$pkgdir &&
-         install -Dm644 $pkgname.debug $pkgdir/usr/lib/debug/$pkgname.debug)
+    (cd build && meson install --destdir=$pkgdir)
 }
