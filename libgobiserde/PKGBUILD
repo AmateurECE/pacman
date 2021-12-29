@@ -1,0 +1,27 @@
+pkgname="libgobiserde"
+pkgver="0.1.1"
+pkgrel="1"
+pkgdesc="Serialization library for C, inspired by Rust's serde"
+arch=("any")
+license=("MIT")
+source=("https://github.com/AmateurECE/libgobiserde/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('ee1efceea92bde6bc242fff78bdf91c2d4abad50c4eea18dab0e8b8c17a02992')
+makedepends=("meson")
+depends=("libyaml")
+url="https://github.com/AmateurECE/libgobiserde"
+groups=("edtwardy")
+options=(debug !strip)
+
+prepare() {
+    tar xzf v$pkgver.tar.gz
+}
+
+build() {
+    (cd $pkgname-$pkgver &&
+         meson setup --prefix /usr -Dbuildtype=debug ../build)
+    (cd build && ninja)
+}
+
+package() {
+    (cd build && meson install --destdir=$pkgdir)
+}
