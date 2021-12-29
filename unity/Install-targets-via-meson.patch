@@ -1,0 +1,16 @@
+Change Meson build script of static library to install build targets/headers
+--- a/src/meson.build
++++ b/src/meson.build
+@@ -6,6 +6,11 @@
+ #
+ unity_dir = include_directories('.')
+ 
++install_headers(['unity.h', 'unity_internals.h'])
+ unity_lib = static_library(meson.project_name(), 
+     files('unity.c'),
+-    include_directories: unity_dir)
++    include_directories: unity_dir,
++    install: true)
++
++pkgconfig = import('pkgconfig')
++pkgconfig.generate(unity_lib, filebase: 'unity')

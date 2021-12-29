@@ -1,0 +1,30 @@
+pkgname="unity"
+pkgver="2.5.2"
+pkgrel="1"
+pkgdesc="Simple Unit Testing for C"
+arch=("any")
+license=("MIT")
+source=(
+    "https://github.com/ThrowTheSwitch/$pkgname/archive/refs/tags/v$pkgver.tar.gz"
+    "Install-targets-via-meson.patch"
+)
+sha256sums=('3786de6c8f389be3894feae4f7d8680a02e70ed4dbcce36109c8f8646da2671a'
+            'db9155c85298dcf35f29e9fed113a368d629dbcb5abb7c83376b0a6bdfe4f7d6')
+makedepends=("meson")
+url="https://github.com/ThrowTheSwitch/$pkgname"
+
+prepare() {
+    tar xzf v$pkgver.tar.gz
+    echo "${srcdir}/${source[1]}"
+    (cd Unity-$pkgver &&
+         patch --forward --strip=1 --input="${srcdir}/${source[1]}")
+}
+
+build() {
+    (cd Unity-$pkgver && meson setup --prefix /usr ../build)
+    (cd build && meson compile)
+}
+
+package() {
+    (cd build && meson install --destdir=$pkgdir)
+}
