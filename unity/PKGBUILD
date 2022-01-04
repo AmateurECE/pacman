@@ -14,7 +14,8 @@ prepare() {
 }
 
 build() {
-    cmake -DCMAKE_INSTALL_PREFIX=/usr -G"Unix Makefiles" -B build Unity-$pkgver
+    cmake -DCMAKE_INSTALL_PREFIX=/usr -DUNITY_EXTENSION_FIXTURE=true \
+          -G"Unix Makefiles" -B build Unity-$pkgver
     (cd build && make)
 }
 
