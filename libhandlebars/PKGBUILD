@@ -1,12 +1,12 @@
 pkgname="libhandlebars"
-pkgver="0.1.4"
+pkgver="0.3.1"
 pkgrel="1"
 pkgdesc="Simple library for parsing Handlebars templates"
 arch=("any")
 license=("MIT")
 source=("https://github.com/AmateurECE/libhandlebars/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('8c7bb5ae336d77f2a7ecb5768e84caa6c31bf83b546f35523cbe31a5512820ab')
-makedepends=("meson" "peg")
+sha256sums=('8227b0381be312326b1f0f2b860cac37d79a582dc03b29ca9eafc29e09224d08')
+makedepends=("meson")
 url="https://github.com/AmateurECE/libhandlebars"
 groups=("edtwardy")
 
