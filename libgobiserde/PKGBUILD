@@ -1,11 +1,11 @@
 pkgname="libgobiserde"
-pkgver="0.1.1"
+pkgver="0.1.2"
 pkgrel="1"
 pkgdesc="Serialization library for C, inspired by Rust's serde"
 arch=("any")
 license=("MIT")
 source=("https://github.com/AmateurECE/libgobiserde/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('ee1efceea92bde6bc242fff78bdf91c2d4abad50c4eea18dab0e8b8c17a02992')
+sha256sums=('e5b98f9af13491dc7050fcdc1b23f8c9d8945c0316aebd01085402585e003d45')
 makedepends=("meson")
 depends=("libyaml")
 url="https://github.com/AmateurECE/libgobiserde"
