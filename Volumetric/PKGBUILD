@@ -1,0 +1,27 @@
+pkgname="Volumetric"
+pkgver="0.1.1"
+pkgrel="1"
+pkgdesc="Versioning for Docker volumes"
+arch=("any")
+depends=("glibc" "glib2" "json-c" "curl" "libarchive" "openssl")
+license=("GPLv3")
+source=("https://github.com/AmateurECE/Volumetric/archive/refs/tags/v$pkgver.tar.gz")
+makedepends=("meson")
+url="https://github.com/AmateurECE/Volumetric"
+groups=("edtwardy")
+sha256sums=('98dd9a2d147759571d93e3636b92812fd51adb326c8b9f51b71a1d857dd812b1')
+
+prepare() {
+    tar xzf v$pkgver.tar.gz
+}
+
+build() {
+    (cd $pkgname-$pkgver/volumetric \
+         && meson setup -Dbuildtype=release -Dwarning_level=3 \
+                  --prefix /usr ../../build)
+    (cd build && ninja)
+}
+
+package() {
+    (cd build && meson install --destdir=$pkgdir)
+}
