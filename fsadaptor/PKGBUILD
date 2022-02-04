@@ -1,0 +1,26 @@
+pkgname="fsadaptor"
+pkgver="0.1.1"
+pkgrel="1"
+pkgdesc="A filesystem polyfill/shim for C++"
+arch=("any")
+depends=("glibc")
+license=("GPLv3")
+source=("https://github.com/AmateurECE/fsadaptor/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('c9a4c8c3749d020d64f9f89c9068f77763d38c96cec2ce391a024bb721efde1d')
+makedepends=("cmake" "gtest")
+url="https://github.com/AmateurECE/fsadaptor"
+groups=("edtwardy")
+
+prepare() {
+    tar xzf v$pkgver.tar.gz
+}
+
+build() {
+    (mkdir -p build && cd build \
+         && cmake -DCMAKE_INSTALL_PREFIX=/usr -B . ../FSAdaptor-$pkgver \
+         && cmake --build .)
+}
+
+package() {
+    (cd build && make install DESTDIR=$pkgdir)
+}

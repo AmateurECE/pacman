@@ -1,0 +1,27 @@
+pkgname="SortMedia"
+pkgver="0.1.0"
+pkgrel="1"
+pkgdesc="Sort media files on the filesystem according to a predefined schema"
+arch=("any")
+depends=("glibc" "fsadaptor")
+license=("GPLv3")
+source=("https://github.com/AmateurECE/SortMedia/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('c7fbf229bdaf08ed657628ad78f85e515065c30a76e3ee99c4a7c83a0cc4ab22')
+makedepends=("cmake" "gtest")
+url="https://github.com/AmateurECE/SortMedia"
+groups=("edtwardy")
+
+prepare() {
+    tar xzf v$pkgver.tar.gz
+}
+
+build() {
+    (mkdir -p build && cd build \
+         && conan install ../$pkgname-$pkgver --build=taglib \
+         && cmake -DCMAKE_INSTALL_PREFIX=/usr -B . ../$pkgname-$pkgver \
+         && cmake --build .)
+}
+
+package() {
+    (cd build && make install DESTDIR=$pkgdir)
+}
