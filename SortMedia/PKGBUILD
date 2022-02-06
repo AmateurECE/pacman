@@ -1,12 +1,12 @@
 pkgname="SortMedia"
-pkgver="0.1.0"
+pkgver="0.1.1"
 pkgrel="1"
 pkgdesc="Sort media files on the filesystem according to a predefined schema"
 arch=("any")
 depends=("glibc" "fsadaptor")
 license=("GPLv3")
 source=("https://github.com/AmateurECE/SortMedia/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('c7fbf229bdaf08ed657628ad78f85e515065c30a76e3ee99c4a7c83a0cc4ab22')
+sha256sums=('43c739d813c0f6192cc01ce9855fa302e17091dd4b7d6db5a3ce6ce1895a1c9d')
 makedepends=("cmake" "gtest")
 url="https://github.com/AmateurECE/SortMedia"
 groups=("edtwardy")
