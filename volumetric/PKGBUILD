@@ -1,24 +1,24 @@
-pkgname="Volumetric"
-pkgver="0.1.1"
+pkgname="volumetric"
+pkgver="0.2.4"
 pkgrel="1"
 pkgdesc="Versioning for Docker volumes"
 arch=("any")
 depends=("glibc" "glib2" "json-c" "curl" "libarchive" "openssl")
 license=("GPLv3")
-source=("https://github.com/AmateurECE/Volumetric/archive/refs/tags/v$pkgver.tar.gz")
+source=("https://github.com/AmateurECE/volumetric/archive/refs/tags/v$pkgver.tar.gz")
 makedepends=("meson")
-url="https://github.com/AmateurECE/Volumetric"
+url="https://github.com/AmateurECE/volumetric"
 groups=("edtwardy")
-sha256sums=('98dd9a2d147759571d93e3636b92812fd51adb326c8b9f51b71a1d857dd812b1')
+sha256sums=('1cc86e069a3187a7f20b9836758cd90b3212dfc4ca5f1391a7ef9b34684473b0')
 
 prepare() {
     tar xzf v$pkgver.tar.gz
 }
 
 build() {
-    (cd $pkgname-$pkgver/volumetric \
-         && meson setup -Dbuildtype=release -Dwarning_level=3 \
-                  --prefix /usr ../../build)
+    (cd $pkgname-$pkgver \
+         && meson setup -Dbuildtype=release -Dwarning_level=3 --prefix /usr \
+                  -Dsystemd_unitdir=/usr/lib/systemd/system ../build)
     (cd build && ninja)
 }
 
