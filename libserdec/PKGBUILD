@@ -1,11 +1,11 @@
 pkgname="libserdec"
-pkgver="0.2.0"
+pkgver="0.3.0"
 pkgrel="1"
 pkgdesc="Serialization library for C, inspired by Rust's serde"
 arch=("any")
 license=("MIT")
 source=("https://github.com/AmateurECE/libserdec/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('a95904761854b5fc21925491c119b51fb5c29f27837e95d5c23a3bcceb297744')
+sha256sums=('17e36957f2ff8a81656701968248f382f82a006a7f4e3eaa913d1d3678eab284')
 makedepends=("meson")
 depends=("libyaml")
 url="https://github.com/AmateurECE/libserdec"
