@@ -1,0 +1,31 @@
+pkgname="volumetric-test"
+pkgver="0.1.0"
+pkgrel="1"
+pkgdesc="Versioning for Docker volumes--test configuration"
+arch=("any")
+license=("GPLv3")
+depends=("renderbars")
+source=("test-project.yaml.hbs" "test.txt" "volumetric.yaml")
+url="https://github.com/AmateurECE/volumetric"
+groups=("edtwardy")
+sha256sums=('45f900c31ba6e384bd72732d2c8983da79095bc36d968d7ccd99a3b5c2bd8e9b'
+            '114811b0b8998cb9853a5379598021410feddf69bb2ee7b7145d052a7e9b5d45'
+            '79a3a5d567dc1edd4fcf4c59dd346e5f8896fc232f7b5889157bad0f2e3dc795')
+
+build() {
+    tar chzvf testvol-image.tar.gz ./test.txt
+    renderbars \
+        -c volume_hash=$(md5sum testvol-image.tar.gz | awk '{print $1}') \
+        test-project.yaml.hbs test-project.yaml
+}
+
+package() {
+    install -d $pkgdir/etc/volumetric
+    install -m444 volumetric.yaml $pkgdir/etc/volumetric
+
+    install -d $pkgdir/etc/volumetric/volumes.d
+    install -m444 test-project.yaml $pkgdir/etc/volumetric/volumes.d
+
+    install -d $pkgdir/usr/share/volumetric-test
+    install -m444 testvol-image.tar.gz $pkgdir/usr/share/volumetric-test
+}
