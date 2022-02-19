@@ -1,0 +1,33 @@
+Add a meson build file to generate library files for installation
+--- /dev/null
++++ b/meson.build
+@@ -0,0 +1,29 @@
++###############################################################################
++# NAME:             meson.build
++#
++# AUTHOR:           Ethan D. Twardy <ethan.twardy@gmail.com>
++#
++# DESCRIPTION:      Meson build script for libaco (dev) static library
++#
++# CREATED:          02/18/2022
++#
++# LAST EDITED:      02/18/2022
++###
++
++project('libaco', 'c', version: '1.2.4')
++
++install_headers('aco.h')
++libaco = library(
++  'aco',
++  sources: [
++    'aco.c',
++    'acosw.S',
++  ],
++  install: true,
++  soversion: meson.project_version(),
++)
++
++pkgconfig = import('pkgconfig')
++pkgconfig.generate(libaco, filebase: 'libaco')
++
++###############################################################################

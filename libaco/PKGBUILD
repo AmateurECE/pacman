@@ -1,0 +1,32 @@
+pkgname="libaco"
+pkgver="1.2.4"
+pkgrel="1"
+pkgdesc="A blazing fast and lightweight C asymmetric coroutine library"
+arch=("any")
+license=("Apache-2.0")
+source=(
+    "https://github.com/hnes/libaco/archive/refs/tags/v1.2.4.tar.gz"
+    "series"
+    "0001-Add-meson-build.patch"
+)
+url="https://github.com/hnes/libaco/"
+options=(debug !strip)
+sha256sums=('25e0777ec2c686cc8c8433537d9b3694d196b0287abe6df4f0c21f8605fa5a06'
+            'dddd5f68ce9289930594b3e9fed3d2373e7f38e6544ab94333eef242fd2edcb3'
+            '2d6dc820da1d30f43833ac3b8f66d98850d183871da117317fcd6a1bc0870204')
+
+prepare() {
+    tar xzf v$pkgver.tar.gz
+    (cd $pkgname-$pkgver \
+         && patch --forward --strip=1 \
+                  --input="${srcdir}/0001-Add-meson-build.patch")
+}
+
+build() {
+    (cd $pkgname-$pkgver && meson setup -Dprefix=/usr "${srcdir}/build")
+    (cd build && ninja)
+}
+
+package() {
+    (cd build && meson install --destdir=$pkgdir)
+}
