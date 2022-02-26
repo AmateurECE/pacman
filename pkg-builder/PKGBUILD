@@ -1,0 +1,27 @@
+pkgname="pkg-builder"
+pkgver="0.1.0"
+pkgrel="1"
+pkgdesc="Build Packages for my CI/CD Deployments"
+arch=("any")
+license=("MIT")
+source=("https://github.com/AmateurECE/pkg-builder/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('e513b8b04e95a91df05e8f23cea23619f3bb8a6076a7ae40f30c34e09ab28fc5')
+makedepends=("cargo")
+url="https://github.com/AmateurECE/pkg-builder"
+groups=("edtwardy")
+
+prepare() {
+    tar xzf v$pkgver.tar.gz
+}
+
+build() {
+    (cd $pkgname-$pkgver && cargo build --release)
+    strip $pkgname-$pkgver/target/release/$pkgname
+}
+
+package() {
+    install -d $pkgdir/usr/bin
+    install $pkgname-$pkgver/target/release/pkg-builder $pkgdir/usr/bin
+    install -d $pkgdir/usr/share/licenses/$pkgname
+    install $pkgname-$pkgver/LICENSE $pkgdir/usr/share/licenses/$pkgname
+}
