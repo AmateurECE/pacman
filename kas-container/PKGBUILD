@@ -1,0 +1,18 @@
+pkgname="kas-container"
+pkgver="2.6.3"
+pkgrel="1"
+pkgdesc="Run kas in a container!"
+arch=("any")
+license=("GPLv3")
+source=("https://github.com/siemens/kas/archive/refs/tags/$pkgver.tar.gz")
+sha256sums=('7ad92a52418429d984251d893f124bda8bfbd45a5f9502bc5af4b5a143033145')
+url="https://github.com/siemens/kas"
+
+prepare() {
+    tar xzf $pkgver.tar.gz
+}
+
+package() {
+    install -d $pkgdir/usr/bin
+    install kas-2.6.3/kas-container $pkgdir/usr/bin
+}
