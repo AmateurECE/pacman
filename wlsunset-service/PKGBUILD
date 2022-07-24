@@ -1,0 +1,16 @@
+# Maintainer: Ethan D. Twardy <ethan.twardy@gmail.com>
+
+pkgname=wlsunset-service
+pkgver=1.0.0
+pkgrel=1
+pkgdesc='service to update display gamma (under Wayland) on login'
+arch=(any)
+url='https://sr.ht/~kennylevinsen/wlsunset'
+license=('MIT')
+depends=('wlsunset')
+source=('wlsunset.service')
+sha256sums=('a1884afa713a511010ac9730b8149108fa85b21e267c378cc410862f83115a7d')
+
+package() {
+    install -Dm644 wlsunset.service -t "$pkgdir/etc/systemd/user"
+}

@@ -1,0 +1,13 @@
+[Unit]
+Description=Day/night gamma adjustments for Wayland compositors
+Documentation=man:dbus-daemon(1)
+
+[Service]
+Environment=MAX_TEMP=5500
+ExecStart=/usr/bin/wlsunset -T $MAX_TEMP
+Slice=session.slice
+Restart=always
+RestartSec=2s
+
+[Install]
+WantedBy=default.target
