@@ -12,5 +12,5 @@ sha256sums=('333bea50f91ae0691ffd9a3b8222fca764796747f8cd5b28c7a1f608c818a7a9')
 
 package() {
     install -Dm644 cherry-clouds.jpg \
-            -t "$pkgdir/usr/share/backgrounds/edtwardy/background.jpg"
+            "$pkgdir/usr/share/backgrounds/edtwardy/background.jpg"
 }
