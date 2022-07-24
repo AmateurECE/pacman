@@ -1,0 +1,16 @@
+# Maintainer: Ethan D. Twardy <ethan.twardy@gmail.com>
+
+pkgname=powertop-service
+pkgver=1.0.0
+pkgrel=1
+pkgdesc='service to automatically tune power settings'
+arch=(any)
+url='https://01.org/powertop/'
+license=('MIT')
+depends=('powertop')
+source=('powertop.service')
+sha256sums=('0ddbc735e3f9a73b4f42156f6cf492f74eb787bbc6eeef488282e0d1d364de10')
+
+package() {
+    install -Dm644 powertop.service -t "$pkgdir/usr/lib/systemd/system"
+}

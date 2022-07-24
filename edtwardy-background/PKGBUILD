@@ -1,0 +1,15 @@
+# Maintainer: Ethan D. Twardy <ethan.twardy@gmail.com>
+
+pkgname=edtwardy-background
+pkgver=1.0.0
+pkgrel=1
+pkgdesc='background image for use with my swaywm dotfiles'
+arch=(any)
+url='https://www.reddit.com/r/wallpaper/comments/6ark9e/amazing_street_in_germany_2560x1600/?utm_source=share&utm_medium=web2x&context=3'
+license=('MIT')
+source=('cherry-clouds.jpg')
+sha256sums=('333bea50f91ae0691ffd9a3b8222fca764796747f8cd5b28c7a1f608c818a7a9')
+
+package() {
+    install -Dm644 cherry-clouds.jpg -t "$pkgdir/usr/share/backgrounds/edtwardy"
+}
