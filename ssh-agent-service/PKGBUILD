@@ -1,0 +1,16 @@
+# Maintainer: Ethan D. Twardy <ethan.twardy@gmail.com>
+
+pkgname=ssh-agent-service
+pkgver=1.0.0
+pkgrel=1
+pkgdesc='service to automatically start an ssh-agent on login'
+arch=(any)
+url='https://wiki.archlinux.org/title/SSH_keys#SSH_agents'
+license=('MIT')
+depends=('openssh')
+source=('ssh-agent.service')
+sha256sums=('888f611dbd7cad6e34736fdc5ed3116b10a4d8af0f17662ec3f9af7865c41510')
+
+package() {
+    install -Dm644 ssh-agent.service -t "$pkgdir/etc/systemd/user"
+}
