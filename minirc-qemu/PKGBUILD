@@ -1,0 +1,16 @@
+# Maintainer: Ethan D. Twardy <ethan.twardy@gmail.com>
+
+pkgname=minirc-qemu
+pkgver=1.0.0
+pkgrel=1
+pkgdesc='Minicom configuration for QEMU'
+arch=(any)
+url='https://www.qemu.org/docs/master/system/invocation.html'
+license=('MIT')
+depends=('qemu-system-x86')
+source=('minirc.qemu')
+sha256sums=('d914092c431eb86fe056946405679edf6f0ed891fe320bf39c0d0ebba81715af')
+
+package() {
+    install -Dm644 minirc.qemu -t "$pkgdir/etc"
+}

@@ -1,0 +1,21 @@
+# Maintainer: Ethan D. Twardy <ethan.twardy@gmail.com>
+
+pkgname=kernel-sandbox
+pkgver=1.0.0
+pkgrel=1
+pkgdesc='systemd drop-in file to delegate CGroup controllers to a non-root user'
+arch=(any)
+url='https://wiki.archlinux.org/title/Cgroups#User_delegation'
+license=('MIT')
+depends=('systemd')
+source=('delegate.conf' 'kernel-sandbox.slice')
+sha256sums=('e76d8e19201dfabb0968655f9597434d63b7551cd81375963a0a1c7d7e3de43b'
+           'd3f81846b72f79f4c44b27d670d2991a5e1086ed77612daded257df3319c82c1')
+
+package() {
+    # Obviously, this install script only works for my system, or systems where
+    # the delegated user also has UID 1000. It's an ugly solution.
+    install -Dm644 delegate.conf \
+            -t "$pkgdir/etc/systemd/system/user@1000.service.d"
+    install -Dm644 kernel-sandbox.slice -t "$pkgdir/etc/systemd/user"
+}
