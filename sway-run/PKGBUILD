@@ -9,7 +9,7 @@ url='https://sr.ht/~kennylevinsen/greetd/'
 license=('MIT')
 depends=('sway-git')
 source=('sway-run.sh')
-sha256sums=('c5c1bafa8a369f651b09babe846f50be1b773ec1e92c52a3a057e1305afe64b7')
+sha256sums=('9c285613df5a9efbca76097507cddbf4032f6735b42203e2a56c879da116bfcc')
 
 package() {
     install -Dm755 sway-run.sh "$pkgdir/usr/bin/sway-run"
