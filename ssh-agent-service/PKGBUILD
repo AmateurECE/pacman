@@ -9,7 +9,7 @@ url='https://wiki.archlinux.org/title/SSH_keys#SSH_agents'
 license=('MIT')
 depends=('openssh')
 source=('ssh-agent.service')
-sha256sums=('888f611dbd7cad6e34736fdc5ed3116b10a4d8af0f17662ec3f9af7865c41510')
+sha256sums=('721086c99bae2d2cb8e363ab4be585bbc999c34d7a935f74b58550316c427a00')
 
 package() {
     install -Dm644 ssh-agent.service -t "$pkgdir/etc/systemd/user"
