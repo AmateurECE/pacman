@@ -1,0 +1,50 @@
+Add a pkg-config file for llhttp
+--- a/Makefile
++++ b/Makefile
+@@ -15,12 +15,15 @@
+ LIBDIR = $(PREFIX)/lib
+ INCLUDEDIR = $(PREFIX)/include
+ 
+-all: build/libllhttp.a build/libllhttp.so
++all: build/libllhttp.a build/libllhttp.so build/llhttp.pc
+ 
+ clean:
+ 	rm -rf release/
+ 	rm -rf build/
+ 
++build/llhttp.pc: llhttp.pc.in
++	sed -e 's#_PREFIX_#$(PREFIX)#' -e 's#_TAG_#$(TAG)#' $< > $@
++
+ build/libllhttp.so: build/c/llhttp.o build/native/api.o \
+ 		build/native/http.o
+ 	$(CLANG) -shared $^ -o $@
+@@ -71,11 +74,13 @@
+ generate:
+ 	npx ts-node bin/generate.ts
+ 
+-install: build/libllhttp.a build/libllhttp.so
++install: build/libllhttp.a build/libllhttp.so build/llhttp.pc
+ 	$(INSTALL) -d $(DESTDIR)$(INCLUDEDIR)
+ 	$(INSTALL) -d $(DESTDIR)$(LIBDIR)
++	$(INSTALL) -d $(DESTDIR)$(LIBDIR)/pkgconfig
+ 	$(INSTALL) -C build/llhttp.h $(DESTDIR)$(INCLUDEDIR)/llhttp.h
+ 	$(INSTALL) -C build/libllhttp.a $(DESTDIR)$(LIBDIR)/libllhttp.a
+ 	$(INSTALL) build/libllhttp.so $(DESTDIR)$(LIBDIR)/libllhttp.so
++	$(INSTALL) build/llhttp.pc $(DESTDIR)$(LIBDIR)/pkgconfig/llhttp.pc
+ 
+ .PHONY: all generate clean release
+--- /dev/null
++++ b/llhttp.pc.in
+@@ -0,0 +1,12 @@
++prefix=_PREFIX_
++exec_prefix=${prefix}
++libdir=${exec_prefix}/lib
++includedir=${exec_prefix}/include
++
++Name: llhttp
++Version: _TAG_
++Description: Port of http_parser to llparse
++URL: http://llhttp.org/
++
++Libs: -L${libdir} -lllhttp
++Cflags: -I${includedir}
