@@ -1,0 +1,25 @@
+# Maintainer: Ethan D. Twardy <ethan.twardy@gmail.com>
+
+pkgname=llhttp
+pkgver=6.0.9
+pkgrel=1
+pkgdesc='Port of http_parser to llparse'
+arch=('x86_64' 'aarch64')
+url='https://llhttp.org'
+license=('MIT')
+depends=('glibc')
+makedepends=('cmake' 'ts-node' 'npm' 'clang')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/nodejs/llhttp/archive/v$pkgver.tar.gz")
+sha256sums=('afb1b712bf36d99795ad932826598557f5f5a8822dbd8e507ac04f975bcc5b27')
+
+build() {
+    cd "$pkgname-$pkgver"
+    npm install
+    make
+}
+
+package() {
+    cd "$pkgname-$pkgver"
+    make DESTDIR="$pkgdir" install
+    install -vDm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE-MIT
+}
