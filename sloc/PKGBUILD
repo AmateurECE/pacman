@@ -5,7 +5,7 @@ pkgdesc="Count the number of lines of code in a directory"
 arch=("any")
 license=("GPLv3")
 source=("sloc.sh")
-sha256sums=('1cd8a2e09c9b6eb8d33514d52e2a7fdf82bc84f4fc3cd6f047a39b17226e2944')
+sha256sums=('798b30f065622ca11fa7aa60ccf64b1bab2f0974994f5d93a73815c8d3ffdd7d')
 url="https://github.com/AmateurECE/pacman"
 groups=("edtwardy")
 

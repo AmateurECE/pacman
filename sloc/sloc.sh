@@ -21,7 +21,7 @@ fi
 
 total=0
 for f in $(find . | grep '\.c$\|\.h$'); do
-    lines=$(sed -e '#^//#d' -e '/^\s*$/d' $f | wc -l)
+    lines=$(sed -e 's#^\s*//.*$##' -e '/^\s*$/d' $f | cat -s | wc -l)
     printf '%4s: %s\n' $lines $f
     total=$(expr $total + $lines)
 done
