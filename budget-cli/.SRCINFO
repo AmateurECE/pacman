@@ -1,0 +1,15 @@
+pkgbase = budget-cli
+	pkgdesc = A command line app to accompany the budget-tool.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/AmateurECE/budget-tool
+	arch = any
+	groups = edtwardy
+	license = GPLv3
+	makedepends = cargo
+	depends = glibc
+	depends = gcc-libs
+	source = https://github.com/AmateurECE/budget-tool/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = cdfb22a99f5065cefbd33fe2c9366271e98102c1d58bb801c62df07e6b99ffd5
+
+pkgname = budget-cli

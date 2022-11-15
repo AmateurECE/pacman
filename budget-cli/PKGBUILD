@@ -1,0 +1,27 @@
+pkgname="budget-cli"
+pkgver="0.1.0"
+pkgrel="1"
+pkgdesc="A command line app to accompany the budget-tool."
+arch=("any")
+depends=("glibc" "gcc-libs")
+license=("GPLv3")
+source=("https://github.com/AmateurECE/budget-tool/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('cdfb22a99f5065cefbd33fe2c9366271e98102c1d58bb801c62df07e6b99ffd5')
+makedepends=("cargo")
+url="https://github.com/AmateurECE/budget-tool"
+groups=("edtwardy")
+
+prepare() {
+    tar xzf v$pkgver.tar.gz
+}
+
+build() {
+    (cd budget-tool-$pkgver/tools/budget-cli && cargo build --release)
+    strip "budget-tool-$pkgver/tools/budget-cli/target/release/$pkgname"
+}
+
+package() {
+    install -d $pkgdir/usr/bin
+    install "budget-tool-$pkgver/tools/budget-cli/target/release/$pkgname" \
+            $pkgdir/usr/bin
+}
