@@ -13,18 +13,17 @@
 ###
 
 export XDG_SESSION_TYPE=wayland
-export XDG_SESSION_DESKTOP=sway
-export XDG_CURRENT_DESKTOP=sway
 
 start_sway() {
-    # This one is a temporary bandaid for the M1, since it seems like sway
-    # doesn't play nicely with the simple-framebuffer DRM driver.
-    export WLR_NO_HARDWARE_CURSORS=1
-
+    export XDG_SESSION_DESKTOP=sway
+    export XDG_CURRENT_DESKTOP=sway
     systemd-cat --identifier=sway sway
 }
 
 start_hyprland() {
+    export XDG_SESSION_DESKTOP=hyprland
+    export XDG_CURRENT_DESKTOP=hyprland
+
     # Hyprland won't start without this, but it causes terrible visual
     # artifacts while running under sway.
     export WLR_RENDERER_ALLOW_SOFTWARE=1
