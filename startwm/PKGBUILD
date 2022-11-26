@@ -7,9 +7,22 @@ pkgdesc='wrapper script to run window managers based on wlroots'
 arch=(any)
 url='https://github.com/AmateurECE/pacman.git'
 license=('MIT')
-source=('startwm.sh')
-sha256sums=('b79b0abe8c2fc0eb964a7b3bfb4ab13b662f904c928170154f47edbc3d911f50')
+source=(
+    'startwm.sh'
+    'greetd.conf'
+    'greetd.toml'
+)
+sha256sums=('b79b0abe8c2fc0eb964a7b3bfb4ab13b662f904c928170154f47edbc3d911f50'
+            '8022e074b243c53cf6a4602137f0ffd9e42beadec4e7d68cfd6f16bc976959ce'
+            '3762618e040994476a368830e3fc2a650719f8965158bf9e0b9f9ab0cf502903')
+
+_bindir=/usr/bin
+_datadir=/usr/share
+_systemd_unitdir=/usr/lib/systemd/system
 
 package() {
-    install -Dm755 startwm.sh "$pkgdir/usr/bin/$pkgname"
+    install -Dm755 startwm.sh "${pkgdir}${_bindir}/$pkgname"
+    install -Dm644 greetd.conf \
+            "${pkgdir}${_systemd_unitdir}/greetd.service.d/greetd.conf"
+    install -Dm644 greetd.toml "${pkgdir}${_datadir}/$pkgname/greetd.toml"
 }
