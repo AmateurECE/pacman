@@ -1,0 +1,11 @@
+pkgbase = startwm
+	pkgdesc = wrapper script to run window managers based on wlroots
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/AmateurECE/pacman.git
+	arch = any
+	license = MIT
+	source = startwm.sh
+	sha256sums = b79b0abe8c2fc0eb964a7b3bfb4ab13b662f904c928170154f47edbc3d911f50
+
+pkgname = startwm

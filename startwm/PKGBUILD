@@ -1,0 +1,15 @@
+# Maintainer: Ethan D. Twardy <ethan.twardy@gmail.com>
+
+pkgname=startwm
+pkgver=1.0.0
+pkgrel=1
+pkgdesc='wrapper script to run window managers based on wlroots'
+arch=(any)
+url='https://github.com/AmateurECE/pacman.git'
+license=('MIT')
+source=('startwm.sh')
+sha256sums=('b79b0abe8c2fc0eb964a7b3bfb4ab13b662f904c928170154f47edbc3d911f50')
+
+package() {
+    install -Dm755 startwm.sh "$pkgdir/usr/bin/$pkgname"
+}
