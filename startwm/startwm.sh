@@ -9,7 +9,7 @@
 #
 # CREATED:          07/22/2022
 #
-# LAST EDITED:      11/25/2022
+# LAST EDITED:      11/26/2022
 ###
 
 export XDG_SESSION_TYPE=wayland
@@ -24,9 +24,20 @@ start_sway() {
     systemd-cat --identifier=sway sway
 }
 
+start_hyprland() {
+    # Hyprland won't start without this, but it causes terrible visual
+    # artifacts while running under sway.
+    export WLR_RENDERER_ALLOW_SOFTWARE=1
+
+    systemd-cat --identifier=hyprland Hyprland
+}
+
 case "$1" in
     sway)
         start_sway
+        ;;
+    hyprland)
+        start_hyprland
         ;;
     *)
         >&2 printf '%s\n' "Unknown window manager $1"
