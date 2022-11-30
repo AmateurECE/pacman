@@ -14,6 +14,11 @@
 
 export XDG_SESSION_TYPE=wayland
 
+# This is needed to run wlroots-based window managers in some virtual
+# machine environments (such as VMWare).
+export WLR_RENDERER_ALLOW_SOFTWARE=1
+export WLR_NO_HARDWARE_CURSORS=1
+
 start_sway() {
     export XDG_SESSION_DESKTOP=sway
     export XDG_CURRENT_DESKTOP=sway
