@@ -9,7 +9,7 @@
 #
 # CREATED:          07/22/2022
 #
-# LAST EDITED:      11/26/2022
+# LAST EDITED:      11/29/2022
 ###
 
 export XDG_SESSION_TYPE=wayland
@@ -23,11 +23,6 @@ start_sway() {
 start_hyprland() {
     export XDG_SESSION_DESKTOP=hyprland
     export XDG_CURRENT_DESKTOP=hyprland
-
-    # Hyprland won't start without this, but it causes terrible visual
-    # artifacts while running under sway.
-    export WLR_RENDERER_ALLOW_SOFTWARE=1
-
     systemd-cat --identifier=hyprland Hyprland
 }
 
