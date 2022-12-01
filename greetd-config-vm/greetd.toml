@@ -14,3 +14,7 @@ command = "agreety -c 'systemd-cat --identifier=wayland /usr/bin/startwm'"
 # on the greeter. A graphical greeter may for example require the user to be
 # in the `video` group.
 user = "greeter"
+
+[initial_session]
+command = "systemd-cat --identifier=wayland /usr/bin/startwm"
+user = "archuser"

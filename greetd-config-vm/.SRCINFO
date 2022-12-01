@@ -9,6 +9,6 @@ pkgbase = greetd-config-vm
 	source = greetd.conf
 	source = greetd.toml
 	sha256sums = 8b93c52b244d9cd2318fe5a52464e3c5d47013cce588045b3d8effa988cb1ef2
-	sha256sums = fb20e826a653361579bdffd63298bf7781043516490a0986524182506d240904
+	sha256sums = c35f00369b6cc37b4512657c7d9222aa2575f7a15e130de86120aae0c6fcad6c
 
 pkgname = greetd-config-vm
