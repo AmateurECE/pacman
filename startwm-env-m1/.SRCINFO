@@ -1,0 +1,11 @@
+pkgbase = startwm-env-m1
+	pkgdesc = setup environment for startwm, to run Wayland on Apple M1 hardware
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/AmateurECE/pacman.git
+	arch = any
+	license = MIT
+	source = startwm.sh
+	sha256sums = ac70ba552205ab75282df12e0cbf7c3baac05da717c0531e604c8a795ba45eb0
+
+pkgname = startwm-env-m1
