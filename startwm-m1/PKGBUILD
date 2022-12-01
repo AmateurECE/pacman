@@ -1,0 +1,20 @@
+# Maintainer: Ethan D. Twardy <ethan.twardy@gmail.com>
+
+pkgname=startwm-m1
+pkgver=0.1.0
+_commit=0c7985ea477becb8ad2e2e57f1ea8849b5611486
+pkgrel=1
+pkgdesc='wrapper script to run window managers based on wlroots'
+arch=(any)
+url='https://github.com/AmateurECE/startwm.git'
+license=('MIT')
+source=("https://github.com/AmateurECE/startwm/archive/$_commit.tar.gz")
+sha256sums=('96c998e015c2fc804eae260c2fbc647d33e54dbe8e89872616febea86f81bde0')
+
+build() {
+    (cd startwm-$_commit && make m1)
+}
+
+package() {
+    (cd startwm-$_commit && make install DESTDIR="$pkgdir")
+}
