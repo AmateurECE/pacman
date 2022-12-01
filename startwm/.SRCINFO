@@ -6,10 +6,6 @@ pkgbase = startwm
 	arch = any
 	license = MIT
 	source = startwm.sh
-	source = greetd.conf
-	source = greetd.toml
 	sha256sums = 323a92999dc55ac20871e4d861a35447e2dae236f0dfcb81941085eafa566672
-	sha256sums = 8022e074b243c53cf6a4602137f0ffd9e42beadec4e7d68cfd6f16bc976959ce
-	sha256sums = fb20e826a653361579bdffd63298bf7781043516490a0986524182506d240904
 
 pkgname = startwm
