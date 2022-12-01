@@ -9,29 +9,27 @@
 #
 # CREATED:          07/22/2022
 #
-# LAST EDITED:      11/29/2022
+# LAST EDITED:      11/30/2022
 ###
 
 export XDG_SESSION_TYPE=wayland
 
-# This is needed to run wlroots-based window managers in some virtual
-# machine environments (such as VMWare).
-export WLR_RENDERER_ALLOW_SOFTWARE=1
-export WLR_NO_HARDWARE_CURSORS=1
+# Start sway if no other shell is specified.
+: ${STARTWM_SHELL:=sway}
 
 start_sway() {
     export XDG_SESSION_DESKTOP=sway
     export XDG_CURRENT_DESKTOP=sway
-    systemd-cat --identifier=sway sway
+    exec sway
 }
 
 start_hyprland() {
     export XDG_SESSION_DESKTOP=hyprland
     export XDG_CURRENT_DESKTOP=hyprland
-    systemd-cat --identifier=hyprland Hyprland
+    exec Hyprland
 }
 
-case "$1" in
+case "$STARTWM_SHELL" in
     sway)
         start_sway
         ;;
@@ -39,7 +37,7 @@ case "$1" in
         start_hyprland
         ;;
     *)
-        >&2 printf '%s\n' "Unknown window manager $1"
+        >&2 printf '%s\n' "Unknown window manager $STARTWM_SHELL"
         RC=1
         ;;
 esac

@@ -1,0 +1,11 @@
+pkgbase = startwm-env-vm
+	pkgdesc = setup environment for startwm, to run Wayland in a virtual machine
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/AmateurECE/pacman.git
+	arch = any
+	license = MIT
+	source = startwm.sh
+	sha256sums = 47a45358fd31977d1bedec8460669396dcc6aa746d7aa509acd15a8fac623a83
+
+pkgname = startwm-env-vm
