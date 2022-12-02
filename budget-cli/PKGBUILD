@@ -1,12 +1,12 @@
 pkgname="budget-cli"
-pkgver="0.2.0"
+pkgver="0.3.0"
 pkgrel="1"
 pkgdesc="A command line app to accompany the budget-tool."
 arch=("any")
 depends=("glibc" "gcc-libs")
 license=("GPLv3")
 source=("https://github.com/AmateurECE/budget-tool/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('4e43f8029aaa2cd1419cc6306c79c8a428f6f4dbd6e9ad79431e88e1208f1d64')
+sha256sums=('6e8500056a3bcfdb892fa12d3d517e588fcdb4a0ff16008bac1aeee200d74b57')
 makedepends=("cargo")
 url="https://github.com/AmateurECE/budget-tool"
 groups=("edtwardy")
