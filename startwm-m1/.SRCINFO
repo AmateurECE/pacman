@@ -5,7 +5,7 @@ pkgbase = startwm-m1
 	url = https://github.com/AmateurECE/startwm.git
 	arch = any
 	license = MIT
-	source = https://github.com/AmateurECE/startwm/archive/0c7985ea477becb8ad2e2e57f1ea8849b5611486.tar.gz
-	sha256sums = 96c998e015c2fc804eae260c2fbc647d33e54dbe8e89872616febea86f81bde0
+	source = https://github.com/AmateurECE/startwm/archive/bbbdaf95be71adfd847c40aa9cba6979777f0d85.tar.gz
+	sha256sums = 0058312828e77ecb76b73d9d429b32228d4b9184f285aed8f33a169cd8d1612e
 
 pkgname = startwm-m1

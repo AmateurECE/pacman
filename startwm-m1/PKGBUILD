@@ -2,14 +2,16 @@
 
 pkgname=startwm-m1
 pkgver=0.1.0
-_commit=0c7985ea477becb8ad2e2e57f1ea8849b5611486
+# This commit sets the wayland compositor to Hyprland
+# _commit=2328e1dabc507d13da49b00b554300d013c3fe62
+_commit=bbbdaf95be71adfd847c40aa9cba6979777f0d85
 pkgrel=1
 pkgdesc='wrapper script to run window managers based on wlroots'
 arch=(any)
 url='https://github.com/AmateurECE/startwm.git'
 license=('MIT')
 source=("https://github.com/AmateurECE/startwm/archive/$_commit.tar.gz")
-sha256sums=('96c998e015c2fc804eae260c2fbc647d33e54dbe8e89872616febea86f81bde0')
+sha256sums=('0058312828e77ecb76b73d9d429b32228d4b9184f285aed8f33a169cd8d1612e')
 
 build() {
     (cd startwm-$_commit && make m1)
