@@ -2,14 +2,14 @@
 
 pkgname=startwm-m1
 pkgver=0.1.0
-_commit=da63a528a1fad195356e7c19e24e89763c0cebcf
+_commit=bfc4c76526561bb69862318e4c9b026c29ce1f97
 pkgrel=1
 pkgdesc='wrapper script to run window managers based on wlroots'
 arch=(any)
 url='https://github.com/AmateurECE/startwm.git'
 license=('MIT')
 source=("https://github.com/AmateurECE/startwm/archive/$_commit.tar.gz")
-sha256sums=('8ce921d98c7819a082523be09302cc346c606963cbe8789031536de80f3f13f8')
+sha256sums=('aa003c330f323b2567ae77e201fadbb06d7838fb2c35b73afb20f1971b20365a')
 
 build() {
     (cd startwm-$_commit && make m1)
