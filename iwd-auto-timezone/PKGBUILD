@@ -1,0 +1,32 @@
+# Maintainer: amateurece <ethan.twardy@gmail.com>
+
+pkgname="iwd-auto-timezone"
+pkgver="0.1.0"
+pkgrel="1"
+pkgdesc="D-Bus service to automatically set system timezone based on Geo-IP data"
+arch=(x86_64 aarch64)
+license=("MIT")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/AmateurECE/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('65893cc49924b856717a4748cc376712639ee2ebbd201f8017d20d14bbefdcf9')
+makedepends=("cargo")
+url="https://github.com/AmateurECE/iwd-auto-timezone"
+groups=("edtwardy")
+
+_srcdir=$pkgname-$pkgver
+
+prepare() {
+    (cd $_srcdir && cargo fetch --locked --target "$CARCH-unknown-linux-gnu")
+}
+
+build() {
+    export RUSTUP_TOOLCHAIN=stable
+    export CARGO_TARGET_DIR=target
+    (cd $_srcdir && cargo build --frozen --release --all-features)
+}
+
+package() {
+    install -Dm0755 -t "$pkgdir/usr/bin" "$_srcdir/target/release/$pkgname"
+    install -Dm0644 -t "$pkgdir/usr/lib/systemd/system" \
+            "$_srcdir/iwd-auto-timezone.service"
+    install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname" "$_srcdir/LICENSE"
+}
