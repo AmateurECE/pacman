@@ -1,13 +1,14 @@
-pkgname="unity"
+pkgname="unity-test"
+_pkgname="unity"
 pkgver="2.5.2"
 pkgrel="1"
 pkgdesc="Simple Unit Testing for C"
 arch=("any")
 license=("MIT")
-source=("https://github.com/ThrowTheSwitch/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
+source=("https://github.com/ThrowTheSwitch/$_pkgname/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('3786de6c8f389be3894feae4f7d8680a02e70ed4dbcce36109c8f8646da2671a')
 makedepends=("meson")
-url="https://github.com/ThrowTheSwitch/$pkgname"
+url="https://github.com/ThrowTheSwitch/$_pkgname"
 
 prepare() {
     tar xzf v$pkgver.tar.gz
