@@ -1,0 +1,11 @@
+[Match]
+MACAddress=de:ad:be:ef:00:00
+
+[Network]
+Address=10.0.0.1/24
+DHCPServer=yes
+
+[DHCPServer]
+BootServerAddress=10.0.0.1
+BootFilename=pxelinux.cfg
+EmitTimezone=no

@@ -1,0 +1,18 @@
+# Maintainer: Ethan D. Twardy <ethan.twardy@gmail.com>
+
+pkgname=usbnet-config
+pkgver=1.0.0
+pkgrel=1
+pkgdesc='Configuration files for setup of USB RNDIS networks'
+arch=(any)
+url='https://github.com/AmateurECE/tinyware/'
+license=('MIT')
+source=('70-usbnet.link'
+        '70-usbnet.network')
+sha256sums=('0e2fe71524e71067d9b0b39a3c8ef012a99e35d047cc04634ba392af0a895c73'
+            '9f7809ac38f16d5d9eecc2f1754a2560da3ba6aaea2bb43146acb5aeae5da897')
+
+package() {
+    install -Dm644 70-usbnet.link -t "$pkgdir/etc/systemd/network"
+    install -Dm644 70-usbnet.network -t "$pkgdir/etc/systemd/network"
+}
