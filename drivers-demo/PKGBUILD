@@ -1,0 +1,19 @@
+# Maintainer: Ethan D. Twardy <ethan.twardy@gmail.com>
+
+pkgname=drivers-demo
+pkgver=1.0.0
+pkgrel=1
+pkgdesc='Scripts for the driver development demo'
+arch=(any)
+url=''
+license=('MIT')
+source=('minirc.qemu' 'vhost-user-nunchuk' 'runqemu.sh')
+sha256sums=('b833ac9136686f01250d07617095958c02258b5109fad7117f34659b80bb75c9'
+            '31af79ca762127f1c7d80d808747e0a1fa2d7d4e508bdf934fc404a579f520fe'
+            '65e7ee15a227b2e4960258ca2e7151388809c7d6317cf084288902529c97accd')
+
+package() {
+    install -Dm644 minirc.qemu -t "$pkgdir/etc"
+    install -Dm755 vhost-user-nunchuk -t "$pkgdir/usr/bin"
+    install -Dm755 runqemu.sh "$pkgdir/usr/bin/demo-drivers-runqemu"
+}
