@@ -1,0 +1,27 @@
+# Maintainer: Ethan D. Twardy <ethan.twardy@gmail.com>
+
+pkgname=cobblede-git
+pkgver=r137.95329e2
+pkgrel=1
+pkgdesc='The Cobble Desktop Environment'
+arch=(any)
+url='https://github.com/AmateurECE/dotfiles.git'
+license=('MIT')
+source=("${pkgname}::git+https://github.com/AmateurECE/dotfiles.git")
+sha256sums=('SKIP')
+
+pkgver() {
+	(cd "${srcdir}/${pkgname}" && \
+		echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)")
+}
+
+prepare() {
+	(cd "${srcdir}/${pkgname}" && \
+		for f in patches/*.patch; do
+			patch --forward --strip=1 --input=$f
+		done)
+}
+
+package() {
+    (cd ${pkgname} && make install DESTDIR="$pkgdir")
+}
