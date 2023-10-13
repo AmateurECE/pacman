@@ -1,7 +1,7 @@
 # Maintainer: Ethan D. Twardy <ethan.twardy@gmail.com>
 
 pkgname=cobblede-git
-pkgver=r137.95329e2
+pkgver=r139.5c830ea
 pkgrel=1
 pkgdesc='The Cobble Desktop Environment'
 arch=(any)
@@ -9,6 +9,7 @@ url='https://github.com/AmateurECE/dotfiles.git'
 license=('MIT')
 source=("${pkgname}::git+https://github.com/AmateurECE/dotfiles.git")
 sha256sums=('SKIP')
+depends=('wofi' 'greetd' 'sway' 'foot' 'waybar' 'swaybg')
 
 pkgver() {
 	(cd "${srcdir}/${pkgname}" && \
